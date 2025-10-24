@@ -1,0 +1,22 @@
+{
+    "name": "lof-launcher",
+    "version": "1.0.0",
+    "description": "Your new bare-bones project includes minimal organization with a single `main.rs` file and a few assets.",
+    "main": "index.js",
+    "scripts": {
+        "unocss:dev": "unocss src/**/*.rs -o assets/main.css --watch",
+        "unocss:build": "unocss src/**/*.rs -o assets/main.css",
+        "dev": "npm run unocss:build && dx serve",
+        "dev2": "concurrently \"dx serve\" \"npm run unocss:dev\"",
+        "build": "npm run unocss:build && dx build --platform desktop"
+    },
+    "keywords": [],
+    "author": "Megatron19",
+    "license": "ISC",
+    "devDependencies": {
+        "@unocss/cli": "^66.5.4",
+        "@unocss/preset-wind4": "^66.5.4",
+        "concurrently": "^9.2.1",
+        "unocss": "^66.5.4"
+    }
+}

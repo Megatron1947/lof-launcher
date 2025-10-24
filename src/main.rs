@@ -1,8 +1,6 @@
 use dioxus::prelude::*;
 
-const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
-const HEADER_SVG: Asset = asset!("/assets/header.svg");
 
 fn main() {
     launch(App);
@@ -11,26 +9,14 @@ fn main() {
 #[component]
 fn App() -> Element {
     rsx! {
-        document::Link { rel: "icon", href: FAVICON }
-        document::Link { rel: "stylesheet", href: MAIN_CSS }
-        Hero {}
-
-    }
-}
-
-#[component]
-pub fn Hero() -> Element {
-    rsx! {
         div {
-            id: "hero",
-            img { src: HEADER_SVG, id: "header" }
-            div { id: "links",
-                a { href: "https://dioxuslabs.com/learn/0.6/", "📚 Learn Dioxus" }
-                a { href: "https://dioxuslabs.com/awesome", "🚀 Awesome Dioxus" }
-                a { href: "https://github.com/dioxus-community/", "📡 Community Libraries" }
-                a { href: "https://github.com/DioxusLabs/sdk", "⚙️ Dioxus Development Kit" }
-                a { href: "https://marketplace.visualstudio.com/items?itemName=DioxusLabs.dioxus", "💫 VSCode Extension" }
-                a { href: "https://discord.gg/XgGxMSkvUM", "👋 Community Discord" }
+            document::Link { rel: "stylesheet", href: MAIN_CSS }
+            div {
+                class: "p-4 flex items-center justify-center min-h-screen bg-gray-100",
+                button {
+                    class: "px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 active:bg-blue-700 transition-colors shadow-md",
+                    "测试UnoCSS"
+                }
             }
         }
     }
