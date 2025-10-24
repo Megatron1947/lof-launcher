@@ -8,7 +8,7 @@
         "unocss:build": "unocss src/**/*.rs -o assets/main.css",
         "dev": "npm run unocss:build && dx serve",
         "dev2": "concurrently \"dx serve\" \"npm run unocss:dev\"",
-        "build": "npm run unocss:build && dx build --platform desktop"
+        "build": "npm run unocss:build && dx build -r"
     },
     "keywords": [],
     "author": "Megatron19",
