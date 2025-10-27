@@ -43,40 +43,37 @@ fn App() -> Element {
                     dioxus::desktop::window().drag();
                 },
                 "LOF Launcher"
-            },
+            }
             button {
                 id: "close",
-                class: "w-6 h-6 flex items-center justify-center bg-red-400 text-white rounded-full hover:bg-red-500 active:bg-red-600 transition-colors shadow-md text-xs font-bold leading-none",
+                class: "i-mynaui-x w-6 h-6 flex items-center justify-center bg-red-400 hover:bg-red-500 active:bg-red-600 transition-colors mr-1",
                 onclick: move |_| {
                     window.close();
                 },
-                "X"
-            },
+            }
+        }
+        div {
         }
         // 第一行按键 1-5
-        div {
-            class: "",
+        div { class: "",
             for c in (1..=5) {
-                KeyButton { label: c.to_string() }
+                NumberButton { label: c.to_string() }
             }
         }
         // 第二行按键 qwert
-        div {
-            class: "",
+        div { class: "",
             for c in ['q', 'w', 'e', 'r', 't'] {
                 KeyButton { label: c.to_string() }
             }
         }
         // 第三行按键 asdfg
-        div {
-            class: "",
+        div { class: "",
             for c in ['a', 's', 'd', 'f', 'g'] {
                 KeyButton { label: c.to_string() }
             }
         }
         // 第四行按键 zxcvb
-        div {
-            class: "",
+        div { class: "",
             for c in ['z', 'x', 'c', 'v', 'b'] {
                 KeyButton { label: c.to_string() }
             }
@@ -85,11 +82,23 @@ fn App() -> Element {
 }
 
 #[component]
+fn NumberButton(label: String) -> Element {
+    let num = match label.as_str() {
+        "1" => "one",
+        "2" => "two",
+        "3" => "three",
+        "4" => "four",
+        "5" => "five",
+        _ => "",
+    };
+    rsx! {
+        button { class: "i-mynaui-{num} h-8 w-8" }
+    }
+}
+
+#[component]
 fn KeyButton(label: String) -> Element {
     rsx! {
-        button {
-            class: "",
-            "{label}"
-        }
+        button { class: "i-mynaui-letter-{label} h-8 w-8" }
     }
 }

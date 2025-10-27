@@ -6,14 +6,14 @@
     "scripts": {
         "unocss:dev": "unocss src/**/*.rs -o assets/main.css --watch",
         "unocss:build": "unocss src/**/*.rs -o assets/main.css",
-        "dev": "npm run unocss:build && dx serve",
-        "dev2": "concurrently \"dx serve\" \"npm run unocss:dev\"",
+        "dev": "npm run unocss:build && concurrently \"npm run unocss:dev\" \"dx serve\"",
         "build": "npm run unocss:build && dx build -r"
     },
     "keywords": [],
     "author": "Megatron19",
     "license": "ISC",
     "devDependencies": {
+        "@iconify-json/mynaui": "^1.2.16",
         "@unocss/cli": "^66.5.4",
         "@unocss/preset-wind4": "^66.5.4",
         "concurrently": "^9.2.1",
