@@ -37,40 +37,36 @@ fn App() -> Element {
         document::Link { rel: "stylesheet", href: MAIN_CSS }
         div {
             id: "control_bar",
-            class: "bg-blue flex justify-between items-center h-6 mb-2",
+            class: "bg-blue flex justify-between items-center h-6 mb-2 relative",
             div {
-                class: "flex-1 text-center cursor-move",
+                class: "flex-1 h-full cursor-move",
                 onmousedown: move |_| {
                     dioxus::desktop::window().drag();
                 },
+            }
+            div { class: "absolute left-1/2 transform -translate-x-1/2 pointer-events-none",
                 "LOF Launcher"
             }
-            button {
-                id: "mini",
-                class: "i-mynaui-minus w-6 h-6 flex items-center justify-center bg-red-400 hover:bg-red-500 active:bg-red-600 transition-colors mr-1",
-                onclick: move |_| {
-                    // 最小化
-                    dioxus::desktop::window().set_minimized(true);
-                    // 隐藏窗口
-                    // dioxus::desktop::window().set_visible(false);
-                },
-            }
-            button {
-                id: "close",
-                class: "i-mynaui-x w-6 h-6 flex items-center justify-center bg-red-400 hover:bg-red-500 active:bg-red-600 transition-colors mr-1",
-                onclick: move |_| {
-                    dioxus::desktop::window().close();
-                },
-            }
-        }
-        // 第一行按键 1-5
-        /*
-        div { class: "flex mb-2 ml-2 gap-2",
-            for c in (1..=5) {
-                NumberButton { label: c.to_string() }
+            div { class: "flex",
+                button {
+                    id: "mini",
+                    class: "i-mynaui-minus w-6 h-6 flex items-center justify-center bg-red-400 hover:bg-red-500 active:bg-red-600 transition-colors mr-1",
+                    onclick: move |_| {
+                        // 最小化
+                        dioxus::desktop::window().set_minimized(true);
+                        // 隐藏窗口
+                        // dioxus::desktop::window().set_visible(false);
+                    },
+                }
+                button {
+                    id: "close",
+                    class: "i-mynaui-x w-6 h-6 flex items-center justify-center bg-red-400 hover:bg-red-500 active:bg-red-600 transition-colors mr-1",
+                    onclick: move |_| {
+                        dioxus::desktop::window().close();
+                    },
+                }
             }
         }
-        */
         // 第二行按键 qwert
         div { class: "flex mb-2 ml-2 gap-2",
             for c in ['q', 'w', 'e', 'r', 't'] {
