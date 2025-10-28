@@ -3,7 +3,7 @@
     windows_subsystem = "windows"
 )]
 
-use dioxus::desktop::{use_window, Config, LogicalSize, WindowBuilder};
+use dioxus::desktop::{Config, LogicalSize, WindowBuilder};
 use dioxus::desktop::tao::dpi::PhysicalPosition;
 use dioxus::prelude::*;
 
@@ -33,7 +33,6 @@ fn main() {
 
 #[component]
 fn App() -> Element {
-    let window = use_window();
     rsx! {
         document::Link { rel: "stylesheet", href: MAIN_CSS }
         div {
@@ -47,10 +46,20 @@ fn App() -> Element {
                 "LOF Launcher"
             }
             button {
+                id: "mini",
+                class: "i-mynaui-minus w-6 h-6 flex items-center justify-center bg-red-400 hover:bg-red-500 active:bg-red-600 transition-colors mr-1",
+                onclick: move |_| {
+                    // 最小化
+                    dioxus::desktop::window().set_minimized(true);
+                    // 隐藏窗口
+                    // dioxus::desktop::window().set_visible(false);
+                },
+            }
+            button {
                 id: "close",
                 class: "i-mynaui-x w-6 h-6 flex items-center justify-center bg-red-400 hover:bg-red-500 active:bg-red-600 transition-colors mr-1",
                 onclick: move |_| {
-                    window.close();
+                    dioxus::desktop::window().close();
                 },
             }
         }
