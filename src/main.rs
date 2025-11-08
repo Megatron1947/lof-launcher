@@ -3,13 +3,17 @@
     windows_subsystem = "windows"
 )]
 
-use dioxus::desktop::{Config, LogicalSize, WindowBuilder};
 use dioxus::desktop::tao::dpi::PhysicalPosition;
+use dioxus::desktop::{Config, LogicalSize, WindowBuilder};
 use dioxus::prelude::*;
 
 const MAIN_CSS: Asset = asset!("/assets/main.css");
 
 fn main() {
+    let width = 540;
+    let height = 280;
+    let x = (2560 - width) / 2;
+    let y = (1440 - height) / 2;
     LaunchBuilder::desktop()
         .with_cfg(
             Config::new().with_window(
@@ -24,8 +28,8 @@ fn main() {
                     .with_decorations(false)
                     // 设置窗口启动是否获得焦点
                     .with_focused(false)
-                    .with_position(PhysicalPosition::new(1018, 600))
-                    .with_inner_size(LogicalSize::new(540, 280)),
+                    .with_position(PhysicalPosition::new(x, y))
+                    .with_inner_size(LogicalSize::new(width, height)),
             ),
         )
         .launch(App);
