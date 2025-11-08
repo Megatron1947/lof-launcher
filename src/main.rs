@@ -25,7 +25,7 @@ fn main() {
                     // 设置窗口启动是否获得焦点
                     .with_focused(false)
                     .with_position(PhysicalPosition::new(1018, 600))
-                    .with_inner_size(LogicalSize::new(525, 240)),
+                    .with_inner_size(LogicalSize::new(540, 280)),
             ),
         )
         .launch(App);
